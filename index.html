@@ -1,0 +1,271 @@
+<html>
+	<head>
+		<title>My Smash Dashboard</title>
+		<style>
+			.alignleft {
+				float: left;
+			}
+			.alignright {
+				float: right;
+			}
+			input[type='number']{
+			    width: 459px;
+			}
+    	</style>
+	</head>
+<body>
+	<div id="stuff">
+
+	<p align='center'>Stream title: <input id="titleName" type="text" value="" />
+	<input id="updateTitle" type="button" value="Update" /></p>
+
+	<p align='center'>InfoBox 1: <input id="info1" type="text" value="" />
+	<input id="updateInfo1" type="button" value="Update" /></p>
+
+	<p align='center'>Infobox 2: <input id="info2" type="text" value="" />
+	<input id="updateInfo2" type="button" value="Update" /></p>
+
+	<p class='alignleft'>
+	Player 1:
+	<label for="difficulty">Choose a character:</label>
+
+	<select name="difficulty" id="p1Char">
+		  <option value="mario">Mario</option>
+		  <option value="donkey">Donkey Kong</option>
+		  <option value="link">Link</option>
+		  <option value="samus">Samus</option>
+		  <option value="samusd">Dark Samus</option>
+		  <option value="yoshi">Yoshi</option>
+		  <option value="kirby">Kirby</option>
+		  <option value="fox">Fox</option>
+		  <option value="pikachu">Pikachu</option>
+		  <option value="luigi">Luigi</option>
+		  <option value="ness">Ness</option>
+		  <option value="captain">Captain Falcon</option>
+		  <option value="purin">Jigglypuff</option>
+		  <option value="peach">Peach</option>
+		  <option value="daisy">Daisy</option>
+		  <option value="koopa">Bowser</option>
+		  <option value="ice_climber">Ice Climbers</option>
+		  <option value="sheik">Sheik</option>
+		  <option value="zelda">Zelda</option>
+		  <option value="mariod">Doctor Mario</option>
+		  <option value="pichu">Pichu</option>
+		  <option value="falco">Falco</option>
+		  <option value="marth">Marth</option>
+		  <option value="lucina">Lucina</option>
+		  <option value="younglink">Young Link</option>
+		  <option value="ganon">Ganondorf</option>
+		  <option value="mewtwo">Mewtwo</option>
+		  <option value="roy">Roy</option>
+		  <option value="chrom">Chrom</option>
+		  <option value="gamewatch">Mr. Game & Watch</option>
+		  <option value="metaknight">Meta Knight</option>
+		  <option value="pit">Pit</option>
+		  <option value="pitb">Dark Pit</option>
+		  <option value="szerosuit">Zero Suit Samus</option>
+		  <option value="wario">Wario</option>
+		  <option value="snake">Snake</option>
+		  <option value="ike">Ike</option>
+		  <option value="ptrainer">Pokemon Trainer</option>
+		  <option value="diddy">Diddy Kong</option>
+		  <option value="lucas">Lucas</option>
+		  <option value="sonic">Sonic</option>
+		  <option value="dedede">King Dedede</option>
+		  <option value="pikmin">Olimar</option>
+		  <option value="lucario">Lucario</option>
+		  <option value="robot">R.O.B.</option>
+		  <option value="toonlink">Toon Link</option>
+		  <option value="wolf">Wolf</option>
+		  <option value="murabito">Villager</option>
+		  <option value="rockman">Megaman</option>
+		  <option value="wiifit">Wii Fit Trainer</option>
+		  <option value="rosetta">Rosalina & Luma</option>
+		  <option value="littlemac">Little Mac</option>
+		  <option value="gekkouga">Greninja</option>
+		  <option value="palutena">Palutena</option>
+		  <option value="pacman">Pac-man</option>
+		  <option value="reflet">Robin</option>
+		  <option value="shulk">Shulk</option>
+		  <option value="koopajr">Bowser Jr.</option>
+		  <option value="duckhunt">Duck Hunt</option>
+		  <option value="ryu">Ryu</option>
+		  <option value="ken">Ken</option>
+		  <option value="cloud">Cloud</option>
+		  <option value="kamui">Corrin</option>
+		  <option value="bayonetta">Bayonetta</option>
+		  <option value="inkling">Inkling</option>
+		  <option value="ridley">Ridley</option>
+		  <option value="simon">Simon</option>
+		  <option value="richter">Richter</option>
+		  <option value="krool">King K. Rool</option>
+		  <option value="shizue">Isabelle</option>
+		  <option value="gaogaen">Incineroar</option>
+		  <option value="packun">Piranha Plant</option>
+		  <option value="jack">Joker</option>
+		  <option value="brave">Hero</option>
+		  <option value="buddy">Banjo & Kazooie</option>
+		  <option value="dolly">Terry</option>
+		  <option value="master">Byleth</option>
+		  <option value="tantan">Min-Min</option>
+		  <option value="pickel">Steve</option>
+		  <option value="edge">Sephiroth</option>
+		  <option value="eflame_only">Pyra</option>
+		  <option value="elight_only">Mythra</option>
+		</select>
+
+	<label for="size">Choose an alt:</label>
+
+	<select name="size" id="p1Alt">
+	  <option value="0">1</option>
+	  <option value="1">2</option>
+	  <option value="2">3</option>
+	  <option value="3">4</option>
+	  <option value="4">5</option>
+	  <option value="5">6</option>
+	  <option value="6">7</option>
+	  <option value="7">8</option>
+	</select>
+
+	<img id="p1Preview" src="./node_modules/Stocks/chara_2_mario_00.png" width="16" height="16"></img>
+	<input id="updateP1" type="button" value="Update" />
+	Currently:
+	<img id="p1Current" src="./updateables/stock1.png" width="16" height="16"></img>
+
+	<br>
+	Player 1 Score: <input id="p1Score" type="number" value="0" />
+	<input id="updateP1Score" type="button" value="Update" />
+
+	<br>
+	Player 1 Name: <input id="p1Name" type="text" size="60" value="" />
+	<input id="updateP1Name" type="button" value="Update" />
+
+	</p>
+
+		<p class='alignright'>
+		Player 2:
+		<label for="difficulty">Choose a character:</label>
+
+		<select name="difficulty" id="p2Char">
+		  <option value="mario">Mario</option>
+		  <option value="donkey">Donkey Kong</option>
+		  <option value="link">Link</option>
+		  <option value="samus">Samus</option>
+		  <option value="samusd">Dark Samus</option>
+		  <option value="yoshi">Yoshi</option>
+		  <option value="kirby">Kirby</option>
+		  <option value="fox">Fox</option>
+		  <option value="pikachu">Pikachu</option>
+		  <option value="luigi">Luigi</option>
+		  <option value="ness">Ness</option>
+		  <option value="captain">Captain Falcon</option>
+		  <option value="purin">Jigglypuff</option>
+		  <option value="peach">Peach</option>
+		  <option value="daisy">Daisy</option>
+		  <option value="koopa">Bowser</option>
+		  <option value="ice_climber">Ice Climbers</option>
+		  <option value="sheik">Sheik</option>
+		  <option value="zelda">Zelda</option>
+		  <option value="mariod">Doctor Mario</option>
+		  <option value="pichu">Pichu</option>
+		  <option value="falco">Falco</option>
+		  <option value="marth">Marth</option>
+		  <option value="lucina">Lucina</option>
+		  <option value="younglink">Young Link</option>
+		  <option value="ganon">Ganondorf</option>
+		  <option value="mewtwo">Mewtwo</option>
+		  <option value="roy">Roy</option>
+		  <option value="chrom">Chrom</option>
+		  <option value="gamewatch">Mr. Game & Watch</option>
+		  <option value="metaknight">Meta Knight</option>
+		  <option value="pit">Pit</option>
+		  <option value="pitb">Dark Pit</option>
+		  <option value="szerosuit">Zero Suit Samus</option>
+		  <option value="wario">Wario</option>
+		  <option value="snake">Snake</option>
+		  <option value="ike">Ike</option>
+		  <option value="ptrainer">Pokemon Trainer</option>
+		  <option value="diddy">Diddy Kong</option>
+		  <option value="lucas">Lucas</option>
+		  <option value="sonic">Sonic</option>
+		  <option value="dedede">King Dedede</option>
+		  <option value="pikmin">Olimar</option>
+		  <option value="lucario">Lucario</option>
+		  <option value="robot">R.O.B.</option>
+		  <option value="toonlink">Toon Link</option>
+		  <option value="wolf">Wolf</option>
+		  <option value="murabito">Villager</option>
+		  <option value="rockman">Megaman</option>
+		  <option value="wiifit">Wii Fit Trainer</option>
+		  <option value="rosetta">Rosalina & Luma</option>
+		  <option value="littlemac">Little Mac</option>
+		  <option value="gekkouga">Greninja</option>
+		  <option value="palutena">Palutena</option>
+		  <option value="pacman">Pac-man</option>
+		  <option value="reflet">Robin</option>
+		  <option value="shulk">Shulk</option>
+		  <option value="koopajr">Bowser Jr.</option>
+		  <option value="duckhunt">Duck Hunt</option>
+		  <option value="ryu">Ryu</option>
+		  <option value="ken">Ken</option>
+		  <option value="cloud">Cloud</option>
+		  <option value="kamui">Corrin</option>
+		  <option value="bayonetta">Bayonetta</option>
+		  <option value="inkling">Inkling</option>
+		  <option value="ridley">Ridley</option>
+		  <option value="simon">Simon</option>
+		  <option value="richter">Richter</option>
+		  <option value="krool">King K. Rool</option>
+		  <option value="shizue">Isabelle</option>
+		  <option value="gaogaen">Incineroar</option>
+		  <option value="packun">Piranha Plant</option>
+		  <option value="jack">Joker</option>
+		  <option value="brave">Hero</option>
+		  <option value="buddy">Banjo & Kazooie</option>
+		  <option value="dolly">Terry</option>
+		  <option value="master">Byleth</option>
+		  <option value="tantan">Min-Min</option>
+		  <option value="pickel">Steve</option>
+		  <option value="edge">Sephiroth</option>
+		  <option value="eflame_only">Pyra</option>
+		  <option value="elight_only">Mythra</option>
+		</select>
+
+		<label for="size">Choose an alt:</label>
+
+		<select name="size" id="p2Alt">
+		  <option value="0">1</option>
+		  <option value="1">2</option>
+		  <option value="2">3</option>
+		  <option value="3">4</option>
+		  <option value="4">5</option>
+		  <option value="5">6</option>
+		  <option value="6">7</option>
+		  <option value="7">8</option>
+		</select>
+
+		<img id="p2Preview" src="./node_modules/Stocks/chara_2_mario_00.png" width="16" height="16"></img>
+		<input id="updateP2" type="button" value="Update" />
+		Currently:
+		<img id="p2Current" src="./updateables/stock2.png" width="16" height="16"></img>
+
+	<br>
+	Player 2 Score: <input id="p2Score" type="number" size="70" value="0" />
+	<input id="updateP2Score" type="button" value="Update" />
+
+	<br>
+	Player 2 Name: <input id="p2Name" type="text" size="60" value="" />
+	<input id="updateP2Name" type="button" value="Update" />
+
+	</p>
+
+
+
+</div>
+<div style="clear: both;"></div>
+
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/node_modules/commands.js"></script>
+</body>
+</html>
