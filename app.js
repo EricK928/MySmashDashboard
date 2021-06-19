@@ -20,26 +20,40 @@ io.on('connection', function(client)
     {
     	client.on('player1_update', function(char,alt)
 		{
+			if(char=="miifighter" || char=="miiswordsman" || char=="miigunner")
+			{
+				alt=0;
+			}
+
 			fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock1.png", (err) => {
 			  if (err)
 			  {
 				console.log("Error Found:", err);
-			  }
-			  else
-			  {
 			  }
 			});
     	});
 
     	client.on('player2_update', function(char,alt)
 		{
+			if(char=="miifighter" || char=="miiswordsman" || char=="miigunner")
+			{
+				alt=0;
+			}
+
 			fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock2.png", (err) => {
 			  if (err)
 			  {
-				console.log("Error Found:", err);
-			  }
-			  else
-			  {
+				if(err.errno==-4058)
+				{
+					fs.appendFile('./updateables/stock2.png', "./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", function (err) {
+					  if (err) throw err;
+					  console.log('File created');
+					});
+				}
+				else
+				{
+					console.log("Error Found:", err);
+				}
 			  }
 			});
     	});
