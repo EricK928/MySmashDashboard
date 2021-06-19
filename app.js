@@ -12,6 +12,20 @@ app.get('/', function(req, res,next)
     res.sendFile(__dirname + '/index.html');
 });
 
+//Creates Folder for updateables if doesn't already exist
+if(!fs.existsSync("./updateables"))
+{
+	fs.mkdirSync("./updateables", 0744);
+	console.log('updateables folder created!');
+}
+
+//Creates Folder for updateables if doesn't already exist
+if(!fs.existsSync("./mods"))
+{
+	fs.mkdirSync("./mods", 0744);
+	console.log('mods folder created!');
+}
+
 io.on('connection', function(client)
 {
     console.log('Client connected...');//This is shown in terminal first
@@ -25,12 +39,24 @@ io.on('connection', function(client)
 				alt=0;
 			}
 
-			fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
-			  if (err)
-			  {
-				console.log("Error Found:", err);
-			  }
-			});
+			if(fs.existsSync("./mods/chara_2_"+char+"_0"+alt+".png"))
+			{
+				fs.copyFile("./mods/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
+				  if (err)
+				  {
+					console.log("Error Found:", err);
+				  }
+				});
+			}
+			else
+			{
+				fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
+				  if (err)
+				  {
+					console.log("Error Found:", err);
+				  }
+				});
+			}
     	});
 
     	client.on('text_update', function(title,file)
@@ -63,7 +89,17 @@ io.on('connection', function(client)
 			});
     	});
 
-
+    	client.on('checkPath', function(path,port)
+		{
+			if(fs.existsSync(path))
+			{
+				client.emit('returnCheck'+port, true);
+			}
+			else
+			{
+				client.emit('returnCheck'+port, false);
+			}
+    	});
 
 	});
 });
