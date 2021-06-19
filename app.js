@@ -18,14 +18,14 @@ io.on('connection', function(client)
 
     client.on('join', function(data)
     {
-    	client.on('player1_update', function(char,alt)
+    	client.on('stock_update', function(char,alt,port)
 		{
 			if(char=="miifighter" || char=="miiswordsman" || char=="miigunner")
 			{
 				alt=0;
 			}
 
-			fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock1.png", (err) => {
+			fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
 			  if (err)
 			  {
 				console.log("Error Found:", err);
@@ -33,40 +33,15 @@ io.on('connection', function(client)
 			});
     	});
 
-    	client.on('player2_update', function(char,alt)
+    	client.on('text_update', function(title,file)
 		{
-			if(char=="miifighter" || char=="miiswordsman" || char=="miigunner")
-			{
-				alt=0;
-			}
-
-			fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock2.png", (err) => {
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/stock2.png', "./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			});
-    	});
-
-    	client.on('title_update', function(title)
-		{
-			fs.readFile("./updateables/title.txt", 'utf8', (err,data) =>
+			fs.readFile("./updateables/"+file+".txt", 'utf8', (err,data) =>
 			{
 			  if (err)
 			  {
 				if(err.errno==-4058)
 				{
-					fs.appendFile('./updateables/title.txt', title, function (err) {
+					fs.appendFile('./updateables/'+file+'.txt', title, function (err) {
 					  if (err) throw err;
 					  console.log('File created');
 					});
@@ -80,7 +55,7 @@ io.on('connection', function(client)
 			  {
 					var oldString=data;
 					var newString = data.replace(data, title);
-					fs.writeFile("./updateables/title.txt", newString, 'utf8', function (err)
+					fs.writeFile("./updateables/"+file+".txt", newString, 'utf8', function (err)
 					{
 						if (err) return console.log(err);
 					});
@@ -88,185 +63,8 @@ io.on('connection', function(client)
 			});
     	});
 
-    	client.on('player1score_update', function(score)
-		{
-			fs.readFile("./updateables/score1.txt", 'utf8', (err,data) =>
-			{
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/score1.txt', score, function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			  else
-			  {
-					var oldString=data;
-					var newString = data.replace(data, score);
-					fs.writeFile("./updateables/score1.txt", newString, 'utf8', function (err)
-					{
-						if (err) return console.log(err);
-					});
-			  }
-			});
-    	});
 
-    	client.on('player2score_update', function(score)
-		{
-			fs.readFile("./updateables/score2.txt", 'utf8', (err,data) =>
-			{
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/score2.txt', score, function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			  else
-			  {
-					var oldString=data;
-					var newString = data.replace(data, score);
-					fs.writeFile("./updateables/score2.txt", newString, 'utf8', function (err)
-					{
-						if (err) return console.log(err);
-					});
-			  }
-			});
-    	});
 
-    	client.on('player1name_update', function(name)
-		{
-			fs.readFile("./updateables/name1.txt", 'utf8', (err,data) =>
-			{
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/name1.txt', name, function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			  else
-			  {
-					var oldString=data;
-					var newString = data.replace(data, name);
-					fs.writeFile("./updateables/name1.txt", newString, 'utf8', function (err)
-					{
-						if (err) return console.log(err);
-					});
-			  }
-			});
-    	});
-
-    	client.on('player2name_update', function(name)
-		{
-			fs.readFile("./updateables/name2.txt", 'utf8', (err,data) =>
-			{
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/name2.txt', name, function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			  else
-			  {
-					var oldString=data;
-					var newString = data.replace(data, name);
-					fs.writeFile("./updateables/name2.txt", newString, 'utf8', function (err)
-					{
-						if (err) return console.log(err);
-					});
-			  }
-			});
-    	});
-
-    	client.on('info1_update', function(title)
-		{
-			fs.readFile("./updateables/info1.txt", 'utf8', (err,data) =>
-			{
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/info1.txt', title, function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			  else
-			  {
-					var oldString=data;
-					var newString = data.replace(data, title);
-					fs.writeFile("./updateables/info1.txt", newString, 'utf8', function (err)
-					{
-						if (err) return console.log(err);
-					});
-			  }
-			});
-    	});
-
-    	client.on('info2_update', function(title)
-		{
-			fs.readFile("./updateables/info2.txt", 'utf8', (err,data) =>
-			{
-			  if (err)
-			  {
-				if(err.errno==-4058)
-				{
-					fs.appendFile('./updateables/info2.txt', title, function (err) {
-					  if (err) throw err;
-					  console.log('File created');
-					});
-				}
-				else
-				{
-					console.log("Error Found:", err);
-				}
-			  }
-			  else
-			  {
-					var oldString=data;
-					var newString = data.replace(data, title);
-					fs.writeFile("./updateables/info2.txt", newString, 'utf8', function (err)
-					{
-						if (err) return console.log(err);
-					});
-			  }
-			});
-    	});
 	});
 });
 
