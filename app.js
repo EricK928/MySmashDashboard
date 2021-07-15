@@ -32,16 +32,27 @@ io.on('connection', function(client)
 
     client.on('join', function(data)
     {
-    	client.on('stock_update', function(char,alt,port)
+    	client.on('stock_update', function(char,alt,type,port)
 		{
 			if(char=="miifighter" || char=="miiswordsman" || char=="miigunner")
 			{
 				alt=0;
 			}
 
-			if(fs.existsSync("./mods/chara_2_"+char+"_0"+alt+".png"))
+			var locate;
+
+			if(type==2)
 			{
-				fs.copyFile("./mods/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
+				locate="stocks";
+			}
+			else if(type==1)
+			{
+				locate="renders";
+			}
+
+			if(fs.existsSync("./mods/chara_"+type+"_"+char+"_0"+alt+".png"))
+			{
+				fs.copyFile("./mods/chara_"+type+"_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
 				  if (err)
 				  {
 					console.log("Error Found:", err);
@@ -50,7 +61,7 @@ io.on('connection', function(client)
 			}
 			else
 			{
-				fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
+				fs.copyFile("./node_modules/resources/"+locate+"/chara_"+type+"_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
 				  if (err)
 				  {
 					console.log("Error Found:", err);
