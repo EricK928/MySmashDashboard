@@ -20,20 +20,6 @@
 <body>
 	<div id="stuff">
 
-	<p align='center'><input id="top8" type="button" value="Generate" /></p>
-
-	<p align='center' id='time'>
-
-
-	<!-- <label for="imageWay">Image output type:</label>
-	<select name="imageWay" id="imageSet">
-		<option value="2">Stocks</option>
-		<option value="1">Renders</option>
-	</select>
-
-	</p> -->
-
-
 	<p align='center' id='time'>
 
 
@@ -56,6 +42,8 @@
 	<input id="updateInfo2" type="button" value="Update" /></p>
 
 	<p align='center'>Friendlies mode: <input id="friendlies" type="checkbox"/></p>
+
+	<p align='center'><input id="switch" type="button" value="Switch sides"/><input id="updateP1all" type="button" value="Update Player 1"/><input id="updateP2all" type="button" value="Update Player 2"/></p>
 
 	<p class='alignleft'>
 	Player 1:
@@ -144,7 +132,6 @@
 		  <option value="edge">Sephiroth</option>
 		  <option value="eflame_only">Pyra</option>
 		  <option value="elight_only">Mythra</option>
-		  <option value="demon">Kazuya</option>
 		  <option value="miifighter">Mii Brawler</option>
 		  <option value="miiswordsman">Mii Swordfighter</option>
 		  <option value="miigunner">Mii Gunner</option>
@@ -163,7 +150,7 @@
 	  <option value="7">8</option>
 	</select>
 
-	<img id="p1Preview" src="./node_modules/resources/stocks/chara_2_mario_00.png" width="16" height="16"></img>
+	<img id="p1Preview" src="./node_modules/Stocks/chara_2_mario_00.png" width="16" height="16"></img>
 	<input id="updateP1" type="button" value="Update" />
 	Currently:
 	<img id="p1Current" src="./updateables/stock1.png" width="16" height="16"></img>
@@ -265,7 +252,6 @@
 		  <option value="edge">Sephiroth</option>
 		  <option value="eflame_only">Pyra</option>
 		  <option value="elight_only">Mythra</option>
-		  <option value="demon">Kazuya</option>
 		  <option value="miifighter">Mii Brawler</option>
 		  <option value="miiswordsman">Mii Swordfighter</option>
 		  <option value="miigunner">Mii Gunner</option>
@@ -284,7 +270,7 @@
 		  <option value="7">8</option>
 		</select>
 
-		<img id="p2Preview" src="./node_modules/resources/stocks/chara_2_mario_00.png" width="16" height="16"></img>
+		<img id="p2Preview" src="./node_modules/Stocks/chara_2_mario_00.png" width="16" height="16"></img>
 		<input id="updateP2" type="button" value="Update" />
 		Currently:
 		<img id="p2Current" src="./updateables/stock2.png" width="16" height="16"></img>

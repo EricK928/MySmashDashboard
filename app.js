@@ -6,6 +6,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
+//const fileNames = ["title", "info1", "info2", "name1", "name2", "score1", "score2"];
+
 app.use(express.static(__dirname + '/'));//app.use(express.static(__dirname + '/node_modules'));
 app.get('/', function(req, res,next)
 {
@@ -32,27 +34,27 @@ io.on('connection', function(client)
 
     client.on('join', function(data)
     {
-    	client.on('stock_update', function(char,alt,type,port)
+		//Beginning of grabbing old data from files
+		var fileNames = ["title", "info1", "info2", "name1", "name2", "score1", "score2"];
+		var fileLocs = ["titleName", "info1", "info2", "p1Name", "p2Name", "p1Score", "p2Score"];
+
+		for(var i=0; i<fileNames.length; i++)
+		{
+			var data = fs.readFileSync("./updateables/"+fileNames[i]+".txt", 'utf8');
+			console.log(data);
+			client.emit('loadSavedData',data, fileLocs[i]);
+		}
+
+    	client.on('stock_update', function(char,alt,port)
 		{
 			if(char=="miifighter" || char=="miiswordsman" || char=="miigunner")
 			{
 				alt=0;
 			}
 
-			var locate;
-
-			if(type==2)
+			if(fs.existsSync("./mods/chara_2_"+char+"_0"+alt+".png"))
 			{
-				locate="stocks";
-			}
-			else if(type==1)
-			{
-				locate="renders";
-			}
-
-			if(fs.existsSync("./mods/chara_"+type+"_"+char+"_0"+alt+".png"))
-			{
-				fs.copyFile("./mods/chara_"+type+"_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
+				fs.copyFile("./mods/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
 				  if (err)
 				  {
 					console.log("Error Found:", err);
@@ -61,7 +63,7 @@ io.on('connection', function(client)
 			}
 			else
 			{
-				fs.copyFile("./node_modules/resources/"+locate+"/chara_"+type+"_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
+				fs.copyFile("./node_modules/Stocks/chara_2_"+char+"_0"+alt+".png", "./updateables/stock"+port+".png", (err) => {
 				  if (err)
 				  {
 					console.log("Error Found:", err);
