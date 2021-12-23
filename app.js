@@ -41,7 +41,7 @@ io.on('connection', function(client)
 		for(var i=0; i<fileNames.length; i++)
 		{
 			var data = fs.readFileSync("./updateables/"+fileNames[i]+".txt", 'utf8');
-			console.log(data);
+			//console.log(data);
 			client.emit('loadSavedData',data, fileLocs[i]);
 		}
 
